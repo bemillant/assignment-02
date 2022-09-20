@@ -28,8 +28,69 @@ public class LibraryTest
         Assert.Equal(shouldBe, result);
     }
 
+    //  ImmutableStudent:
+
+    [Fact]
+    public void Check_if_two_students_with_same_name_have_the_same_name()
+    {
+
+        // Given
+        var student = new Library.ImmutableStudent(id: 1, givenName: "Ole", surname: "Hansen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+        var student2 = new Library.ImmutableStudent(id: 2, givenName: "Ole", surname: "Larsen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+
+        // When
+        var result = student2.givenName;
 
 
+        // Then
+        student.givenName.Should().BeEquivalentTo(result);
+    }
+
+    [Fact]
+    public void Check_if_two_students_with_same_givenName_have_different_ids_should_return_true()
+    {
+
+        // Given
+        var student = new Library.ImmutableStudent(id: 1, givenName: "Ole", surname: "Hansen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+        var student2 = new Library.ImmutableStudent(id: 1, givenName: "Ole", surname: "Larsen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+
+        // When
+        var result = student2.id;
 
 
+        // Then
+        student.id.Should().Be(result);
+    }
+
+    [Fact]
+    public void Check_if_student_givenName_toString_works_should_be_Ole()
+    {
+
+        // Given
+        var student = new Library.ImmutableStudent(id: 1, givenName: "Ole", surname: "Hansen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+
+        // When
+        var result = student.givenName.ToString();
+
+
+        // Then
+        student.givenName.Should().BeEquivalentTo(result);
+    }
+
+    [Fact]
+    public void Check_if_student_is_active_should_be_active()
+    {
+
+        // Given
+        var student = new Library.ImmutableStudent(id: 1, givenName: "Ole", surname: "Hansen", Status: Status.Active, startDate: new DateTime(2019, 03, 01), endDate: new DateTime(2023, 08, 01), graduationDate: new DateTime(2023, 07, 01));
+        // When
+        var result = student.GetStatus(DateTime.Now);
+
+
+        // Then
+        student.status.Should().Be(result);
+    }
 }
+
+
+
