@@ -1,11 +1,7 @@
 namespace Assignment2;
-public class Extensions
+public static class Extensions
 {
-    public Extensions()
-    {
-    }
-
-    public bool isSecure(Uri url)
+    public static bool isSecure(this Uri url)
     {
         if (url.Scheme == Uri.UriSchemeHttps)
         {
@@ -18,13 +14,6 @@ public class Extensions
 
     }
 
-    public int wordCount(String str)
-    {
-        return str.Split(new char[] { ' ', ',', '.', '?', '!', ';', ':', '/' }, StringSplitOptions.RemoveEmptyEntries).Length;
-
-
-
-
-    }
+    public static int wordCount(this string str) => str.Split(new char[] { ' ', ',', '.', '?', '!', ';', ':', '/' }, StringSplitOptions.RemoveEmptyEntries).Length;
 
 }
