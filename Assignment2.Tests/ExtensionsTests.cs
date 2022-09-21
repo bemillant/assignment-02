@@ -65,14 +65,33 @@ public class ExtensionsTests
     {
         //Given
 
+        Uri url = new Uri("https://www.google.dk/");
+        var co = new Extensions();
+        bool shouldBe = true;
+
         //When
+        bool result = co.isSecure(url);
+
 
         //Then
 
-
-
-
-        //https://
-
+        Assert.Equal(shouldBe, result);
     }
+
+    [Fact]
+    public void check_how_many_words_in_string_should_return_5()
+    {
+        // Given
+        var ext = new Extensions();
+        string countMe = "Hej med dig  din      flotte";
+        int shouldBe = 5;
+        // When
+
+        int result = ext.wordCount(countMe);
+        // Then
+        Assert.Equal(shouldBe, result);
+    }
+
+
+
 }

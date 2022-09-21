@@ -1,26 +1,30 @@
-// namespace Assignment2;
+namespace Assignment2;
+public class Extensions
+{
+    public Extensions()
+    {
+    }
 
-// public static class Extensions
-// {
-//     public static IEnumerable<T> Flatten<T>(IEnumerable<IEnumerable<T>> items)
-//     {
-//         foreach (var singleEnumerable in items)
-//         {
-//             foreach (var singleItem in singleEnumerable)
-//             {
-//                 yield return singleItem;
-//             }
-//         }
-//     }
+    public bool isSecure(Uri url)
+    {
+        if (url.Scheme == Uri.UriSchemeHttps)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
 
-//     public static IEnumerable<T> Filter<T>(IEnumerable<T> items, Predicate<T> predicate)
-//     {
-//         foreach (var item in items)
-//         {
-//             if (predicate(item))
-//             {
-//                 yield return item;
-//             }
-//         }
-//     }
-// }
+    }
+
+    public int wordCount(String str)
+    {
+        return str.Split(new char[] { ' ', ',', '.', '?', '!', ';', ':', '/' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+
+
+
+    }
+
+}
