@@ -8,9 +8,10 @@ public class DelegatesTests
         //Given
         var str = "Hej med dig hedder du kaj";
         var shouldBe = "jakudreddehgiddemjeH";
+        Delegates.StringDel handler = Delegates.DeleReverseMethod;
 
         //When 
-        var result = new string(str.Replace(" ", "").ToCharArray().Reverse().ToArray());
+        var result = handler(str);
 
         //Then
         shouldBe.Should().BeEquivalentTo(result);
@@ -25,9 +26,10 @@ public class DelegatesTests
         Decimal num1 = new decimal(0.3);
         Decimal num2 = new decimal(0.9);
         Decimal shouldBe = new decimal(0.27);
+        Delegates.DecimalDel handler = Delegates.ProductCalc;
 
         // When
-        var result = Decimal.Multiply(num1, num2);
+        var result = handler(num1, num2);
 
         // Then
         Assert.Equal(shouldBe, result);
@@ -40,9 +42,10 @@ public class DelegatesTests
         string toTest = " 0042";
         int num = 42;
         var shouldBe = true;
+        Delegates.BoolDel handler = Delegates.isStringSameAsNum;
 
         // When
-        var result = Int32.Parse(toTest).Equals(num);
+        var result = handler(toTest, num);
 
         // Then
         Assert.Equal(shouldBe, result);
